@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWISTOPIA - Maze Chaser</title>
+    <link rel="stylesheet" href="style.css">
+   
+   
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        text-align: center;
+        padding: 8px;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin: 8px 0 4px;
+    }
+
+    body > p {
+        font-size: 13px;
+        margin: 5px;
+    }
+
+    .maze-container {
+        width: min(88vw, 360px);
+        margin: 8px auto;
+    }
+
+    #mazeCanvas {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        background: #172554;
+        border: 3px solid #38bdf8;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+        touch-action: none;
+    }
+
+    .game-info {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 8px;
+        flex-wrap: wrap;
+    }
+
+    #message {
+        font-size: 14px;
+        font-weight: bold;
+        min-height: 20px;
+        margin: 6px;
+        color: #facc15;
+    }
+
+    .controls {
+        display: grid;
+        grid-template-columns: repeat(3, 48px);
+        gap: 5px;
+        justify-content: center;
+        margin: 8px auto;
+    }
+
+    .controls button {
+        height: 43px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        background: #38bdf8;
+        color: #082f49;
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+
+    .controls button:active {
+        background: #facc15;
+    }
+
+    .empty {
+        visibility: hidden;
+    }
+
+    .maze-buttons button {
+        padding: 9px 13px;
+        margin: 3px;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    #restartBtn {
+        background: #facc15;
+    }
+
+    #backBtn {
+        background: #bbf7d0;
+    }
+
+    @media (max-height: 700px) {
+        .maze-container {
+            width: min(65vw, 300px);
+        }
+
+        .controls {
+            grid-template-columns: repeat(3, 40px);
+            gap: 4px;
+            margin: 5px auto;
+        }
+
+        .controls button {
+            height: 36px;
+            font-size: 17px;
+        }
+    }
+</style>
+ 
+     
+
+</head>
+<body>
+
+    <h1>🌀 MAZE CHASER</h1>
+    <p>Collect all the stars and avoid the enemies!</p>
+
+    <div class="game-info">
+        <span>⭐ Stars: <span id="stars">0</span></span>
+        <span>❤️ Lives: <span id="lives">3</span></span>
+    </div>
+
+    <div class="maze-container">
+        <canvas id="mazeCanvas" width="480" height="480"></canvas>
+    </div>
+
+    <p id="message">Use arrow keys or the buttons to move!</p>
+
+    <div class="controls">
+        <button class="empty"> </button>
+        <button data-direction="up">⬆️</button>
+        <button class="empty"> </button>
+
+        <button data-direction="left">⬅️</button>
+        <button data-direction="down">⬇️</button>
+        <button data-direction="right">➡️</button>
+    </div>
+
+    <div class="maze-buttons">
+        <button id="restartBtn">🔄 Restart Game</button>
+        <button id="backBtn">🏠 Main Menu</button>
+    </div>
+
+    <script src="maze.js"></script>
+</body>
+</html>

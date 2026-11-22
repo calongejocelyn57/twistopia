@@ -30,21 +30,23 @@ body {
     margin: auto;
 }
 
-.panda {
-    font-size: clamp(65px, 12vw, 110px);
-    margin-bottom: 5px;
-    filter: drop-shadow(0 8px 5px #245b68);
+.panda-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    background: white;
 }
 
 .logo {
-    display: inline-block;
     color: #ffdf24;
     font-size: clamp(38px, 8vw, 68px);
     font-weight: 1000;
     letter-spacing: 3px;
-    text-shadow:
-        3px 4px 0 #164a9c,
-        6px 7px 0 #102c68;
+    text-shadow: 3px 4px 0 #164a9c, 6px 7px 0 #102c68;
 }
 
 .tagline {
@@ -60,12 +62,11 @@ body {
 }
 
 .welcome {
-    margin: 35px 0 25px;
+    margin: 30px 0 25px;
 }
 
 .welcome h2 {
     font-size: clamp(22px, 5vw, 32px);
-    color: white;
     text-shadow: 2px 3px 3px #27628a;
 }
 
@@ -74,7 +75,7 @@ body {
     font-size: 16px;
 }
 
-.game-container {
+.menu-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -84,26 +85,101 @@ body {
     margin: 25px auto;
 }
 
+.menu-card {
+    width: min(100%, 350px);
+    min-height: 260px;
+    padding: 25px 20px;
+    border: 5px solid white;
+    border-radius: 28px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-7px);
+}
+
+.brain-card {
+    background: linear-gradient(145deg, #ffbd36, #ff762e);
+}
+
+.arcade-card {
+    background: linear-gradient(145deg, #a84de5, #5434c7);
+}
+
+.menu-icon {
+    font-size: 75px;
+    margin-bottom: 12px;
+}
+
+.menu-card h3 {
+    font-size: 27px;
+    margin: 12px 0;
+    text-shadow: 2px 3px 2px rgba(0,0,0,0.3);
+}
+
+.menu-card p {
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.play-label {
+    display: inline-block;
+    background: #ff4d21;
+    border: 3px solid white;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.arcade-card .play-label {
+    background: #39bb35;
+}
+
+.game-section {
+    display: none;
+    max-width: 850px;
+    margin: 25px auto;
+}
+
+.game-section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: clamp(25px, 5vw, 34px);
+    margin-bottom: 10px;
+    text-shadow: 2px 3px 3px #27628a;
+}
+
+.section-description {
+    margin-bottom: 22px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
 .game-card {
     width: min(100%, 350px);
-    min-height: 270px;
+    min-height: 250px;
     padding: 22px;
     border: 5px solid white;
     border-radius: 28px;
     cursor: pointer;
     color: white;
     box-shadow: 0 9px 0 rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
 }
 
 .game-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 0 rgba(0,0,0,0.2);
-}
-
-.game-card:active {
-    transform: translateY(3px);
-    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    transform: translateY(-6px);
 }
 
 .number-card {
@@ -114,9 +190,14 @@ body {
     background: linear-gradient(145deg, #48d9f2, #2474df);
 }
 
+.arcade-game-card {
+    background: linear-gradient(145deg, #a84de5, #5434c7);
+    cursor: default;
+}
+
 .game-icon {
     font-size: 65px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .number-grid {
@@ -134,87 +215,6 @@ body {
     padding: 8px 0;
     font-size: 20px;
     font-weight: bold;
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-}
-
-.game-card h3 {
-    font-size: 25px;
-    margin: 12px 0;
-    text-shadow: 2px 3px 2px rgba(0,0,0,0.3);
-}
-
-.game-card p {
-    font-size: 14px;
-    margin-bottom: 18px;
-}
-
-.play-label {
-    display: inline-block;
-    background: #ff4d21;
-    border: 3px solid white;
-    border-radius: 30px;
-    padding: 12px 28px;
-    font-weight: bold;
-    font-size: 17px;
-    box-shadow: 0 4px 0 #a92c13;
-}
-
-.picture-card .play-label {
-    background: #39bb35;
-    box-shadow: 0 4px 0 #187c24;
-}
-
-.how-button {
-    margin-top: 12px;
-    padding: 15px 35px;
-    background: #8c3ce0;
-    color: white;
-    border: 4px solid white;
-    border-radius: 35px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 6px 0 #51218d;
-}
-
-.how-button:hover {
-    background: #a65cf0;
-}
-
-.footer {
-    margin-top: 35px;
-    font-size: 13px;
-    color: white;
-    text-shadow: 1px 2px 2px #23612e;
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 15px 10px;
-    }
-
-    .game-container {
-        gap: 18px;
-    }
-
-    .game-card {
-        min-height: 245px;
-    }
-
-    .welcome {
-        margin: 25px 0 20px;
-    }
-}
-
-.panda-image {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-    margin-bottom: 10px;
-    background: white;
 }
 
 .card-panda {
@@ -225,6 +225,67 @@ body {
     border: 3px solid white;
     margin-bottom: 12px;
 }
+
+.game-card h3 {
+    font-size: 24px;
+    margin: 12px 0;
+}
+
+.game-card p {
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.back-button, .how-button {
+    margin: 12px 5px;
+    padding: 14px 28px;
+    background: #8c3ce0;
+    color: white;
+    border: 4px solid white;
+    border-radius: 35px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #51218d;
+}
+
+.back-button:hover, .how-button:hover {
+    background: #a65cf0;
+}
+
+.coming-soon {
+    display: inline-block;
+    background: #ffdf24;
+    color: #49318c;
+    border-radius: 20px;
+    padding: 9px 18px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 13px;
+    text-shadow: 1px 2px 2px #23612e;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .menu-container, .game-container {
+        gap: 18px;
+    }
+
+    .menu-card, .game-card {
+        min-height: 230px;
+    }
+
+    .welcome {
+        margin: 25px 0 20px;
+    }
+}
 </style>
 </head>
 
@@ -233,50 +294,149 @@ body {
 <header class="header">
     <img src="panda.png" class="panda-image" alt="TWISTOPIA Panda">
     <h1 class="logo">TWISTOPIA</h1>
-    <p class="tagline">TWIST. THINK. HAVE FUN!</p>
+    <p class="tagline">TWIST. PLAY. HAVE FUN!</p>
 </header>
 
-<section class="welcome">
-    <h2>🌟 READY FOR A CHALLENGE? 🌟</h2>
-    <p>Choose your favorite puzzle and start playing!</p>
+<section class="welcome" id="welcome">
+    <h2>🌟 CHOOSE YOUR ADVENTURE! 🌟</h2>
+    <p>Think, play, explore and have fun!</p>
 </section>
 
-<main class="game-container">
+<!-- MAIN CATEGORY MENU -->
 
-    <button class="game-card number-card"
-        onclick="location.href='number.html'"
+<main class="menu-container" id="mainMenu">
 
-        <div class="number-grid">
-            <span>1</span><span>2</span><span>3</span>
-            <span>4</span><span>5</span><span>6</span>
-            <span>7</span><span>8</span><span>9</span>
-        </div>
-
-        <h3>NUMBER TWIST</h3>
-        <p>Twist the numbers and put them in order!</p>
-        <span class="play-label">PLAY NOW ▶</span>
+    <button class="menu-card brain-card" onclick="showSection('brainSection')">
+        <div class="menu-icon">🧠</div>
+        <h3>BRAIN GAMES</h3>
+        <p>Think, solve and challenge yourself!</p>
+        <span class="play-label">EXPLORE GAMES ▶</span>
     </button>
 
-    <button class="game-card picture-card"
-        onclick="location.href='picture.html'">
-
-    
-        <img src="panda.png" class="card-panda" alt="Panda Puzzle">
-        <h3>PICTURE TWIST</h3>
-        <p>Rotate the tiles and complete the picture!</p>
-        <span class="play-label">PLAY NOW ▶</span>
+    <button class="menu-card arcade-card" onclick="showSection('arcadeSection')">
+        <div class="menu-icon">🕹️</div>
+        <h3>ARCADE GAMES</h3>
+        <p>Play, explore and enjoy exciting adventures!</p>
+        <span class="play-label">EXPLORE GAMES ▶</span>
     </button>
 
 </main>
 
-<button class="how-button"
-    onclick="location.href='howtoplay.html'">
+<!-- BRAIN GAMES -->
+
+<section class="game-section" id="brainSection">
+
+    <h2 class="section-title">🧠 BRAIN GAMES</h2>
+    <p class="section-description">Choose your favorite puzzle!</p>
+
+    <div class="game-container">
+
+        <button class="game-card number-card"
+            onclick="location.href='number.html'">
+
+            <div class="number-grid">
+                <span>1</span><span>2</span><span>3</span>
+                <span>4</span><span>5</span><span>6</span>
+                <span>7</span><span>8</span><span>9</span>
+            </div>
+
+            <h3>NUMBER TWIST</h3>
+            <p>Twist the numbers and put them in order!</p>
+            <span class="play-label">PLAY NOW ▶</span>
+        </button>
+
+        <button class="game-card picture-card"
+            onclick="location.href='picture.html'">
+
+            <img src="panda.png" class="card-panda" alt="Panda Puzzle">
+            <h3>PICTURE TWIST</h3>
+            <p>Rotate the tiles and complete the picture!</p>
+            <span class="play-label">PLAY NOW ▶</span>
+        </button>
+
+    </div>
+
+    <button class="back-button" onclick="backToMenu()">
+        ← BACK TO MAIN MENU
+    </button>
+
+</section>
+
+<!-- ARCADE GAMES -->
+
+
+<!-- ARCADE GAMES -->
+
+<section class="game-section" id="arcadeSection">
+
+    <h2 class="section-title">🕹️ ARCADE GAMES</h2>
+    <p class="section-description">Get ready for fun and adventure!</p>
+
+    <div class="game-container">
+
+        <button class="game-card arcade-game-card"
+            onclick="location.href='maze.html'">
+
+            <div class="game-icon">👾</div>
+            <h3>MAZE CHASER</h3>
+            <p>Collect stars, explore the maze and avoid enemies!</p>
+            <span class="play-label">PLAY NOW ▶</span>
+
+        </button>
+
+        <button class="game-card arcade-game-card"
+            onclick="location.href='jump.html'">
+
+            <div class="game-icon">🏃</div>
+            <h3>JUMP ADVENTURE</h3>
+            <p>Jump over obstacles and collect stars!</p>
+            <span class="play-label">PLAY NOW ▶</span>
+
+        </button>
+
+    </div>
+
+    <button class="back-button" onclick="backToMenu()">
+        ← BACK TO MAIN MENU
+    </button>
+
+</section>
+
+
+
+<br>
+
+<button class="how-button" onclick="location.href='howtoplay.html'">
     ❔ HOW TO PLAY
 </button>
 
 <footer class="footer">
-    © TWISTOPIA | Twist. Think. Have Fun!
+    © TWISTOPIA | Twist. Play. Have Fun!
 </footer>
+
+<script>
+function showSection(sectionId) {
+    document.getElementById("mainMenu").style.display = "none";
+    document.getElementById("welcome").style.display = "none";
+
+    document.getElementById("brainSection").classList.remove("active");
+    document.getElementById("arcadeSection").classList.remove("active");
+
+    document.getElementById(sectionId).classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+function backToMenu() {
+    document.getElementById("mainMenu").style.display = "flex";
+    document.getElementById("welcome").style.display = "block";
+
+    document.getElementById("brainSection").classList.remove("active");
+    document.getElementById("arcadeSection").classList.remove("active");
+
+    window.scrollTo(0, 0);
+}
+</script>
 
 </body>
 </html>
