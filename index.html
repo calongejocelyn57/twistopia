@@ -2,30 +2,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWISTOPIA</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TWISTOPIA - Play and Have Fun!</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    padding: 25px 15px;
+    background:
+        radial-gradient(circle at top, #65d9ff, transparent 45%),
+        linear-gradient(180deg, #168ee5, #54c8e8 48%, #72d66a 85%, #35a84b);
+    overflow-x: hidden;
+}
+
+.header {
+    max-width: 850px;
+    margin: auto;
+}
+
+.panda {
+    font-size: clamp(65px, 12vw, 110px);
+    margin-bottom: 5px;
+    filter: drop-shadow(0 8px 5px #245b68);
+}
+
+.logo {
+    display: inline-block;
+    color: #ffdf24;
+    font-size: clamp(38px, 8vw, 68px);
+    font-weight: 1000;
+    letter-spacing: 3px;
+    text-shadow:
+        3px 4px 0 #164a9c,
+        6px 7px 0 #102c68;
+}
+
+.tagline {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    background: #8239d5;
+    border: 3px solid white;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 5px 0 #49218c;
+}
+
+.welcome {
+    margin: 35px 0 25px;
+}
+
+.welcome h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    color: white;
+    text-shadow: 2px 3px 3px #27628a;
+}
+
+.welcome p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 22px;
+    max-width: 850px;
+    margin: 25px auto;
+}
+
+.game-card {
+    width: min(100%, 350px);
+    min-height: 270px;
+    padding: 22px;
+    border: 5px solid white;
+    border-radius: 28px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 0 rgba(0,0,0,0.2);
+}
+
+.game-card:active {
+    transform: translateY(3px);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+
+.number-card {
+    background: linear-gradient(145deg, #ffbd36, #ff762e);
+}
+
+.picture-card {
+    background: linear-gradient(145deg, #48d9f2, #2474df);
+}
+
+.game-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 42px);
+    justify-content: center;
+    gap: 4px;
+    margin: 8px auto 15px;
+}
+
+.number-grid span {
+    background: white;
+    color: #26418c;
+    border-radius: 7px;
+    padding: 8px 0;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+}
+
+.game-card h3 {
+    font-size: 25px;
+    margin: 12px 0;
+    text-shadow: 2px 3px 2px rgba(0,0,0,0.3);
+}
+
+.game-card p {
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.play-label {
+    display: inline-block;
+    background: #ff4d21;
+    border: 3px solid white;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-weight: bold;
+    font-size: 17px;
+    box-shadow: 0 4px 0 #a92c13;
+}
+
+.picture-card .play-label {
+    background: #39bb35;
+    box-shadow: 0 4px 0 #187c24;
+}
+
+.how-button {
+    margin-top: 12px;
+    padding: 15px 35px;
+    background: #8c3ce0;
+    color: white;
+    border: 4px solid white;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #51218d;
+}
+
+.how-button:hover {
+    background: #a65cf0;
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 13px;
+    color: white;
+    text-shadow: 1px 2px 2px #23612e;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .game-container {
+        gap: 18px;
+    }
+
+    .game-card {
+        min-height: 245px;
+    }
+
+    .welcome {
+        margin: 25px 0 20px;
+    }
+}
+
+.panda-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    background: white;
+}
+
+.card-panda {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid white;
+    margin-bottom: 12px;
+}
+</style>
 </head>
+
 <body>
 
-    <h1>TWISTOPIA</h1>
-    <p>Twist the Tiles. Complete the Puzzle!</p>
+<header class="header">
+    <img src="panda.png" class="panda-image" alt="TWISTOPIA Panda">
+    <h1 class="logo">TWISTOPIA</h1>
+    <p class="tagline">TWIST. THINK. HAVE FUN!</p>
+</header>
 
-    <button onclick="location.href='menu.html'"
-    style="
-        background: #ffd166;
-        color: #29245c;
-        border: none;
-        border-radius: 25px;
-        padding: 12px 24px;
-        margin: 15px;
-        font-weight: bold;
-        cursor: pointer;
-    ">
-        ← BACK TO MAIN MENU
+<section class="welcome">
+    <h2>🌟 READY FOR A CHALLENGE? 🌟</h2>
+    <p>Choose your favorite puzzle and start playing!</p>
+</section>
+
+<main class="game-container">
+
+    <button class="game-card number-card"
+        onclick="location.href='number.html'"
+
+        <div class="number-grid">
+            <span>1</span><span>2</span><span>3</span>
+            <span>4</span><span>5</span><span>6</span>
+            <span>7</span><span>8</span><span>9</span>
+        </div>
+
+        <h3>NUMBER TWIST</h3>
+        <p>Twist the numbers and put them in order!</p>
+        <span class="play-label">PLAY NOW ▶</span>
     </button>
 
-    <script src="game.js"></script>
+    <button class="game-card picture-card"
+        onclick="location.href='picture.html'">
+
+    
+        <img src="panda.png" class="card-panda" alt="Panda Puzzle">
+        <h3>PICTURE TWIST</h3>
+        <p>Rotate the tiles and complete the picture!</p>
+        <span class="play-label">PLAY NOW ▶</span>
+    </button>
+
+</main>
+
+<button class="how-button"
+    onclick="location.href='howtoplay.html'">
+    ❔ HOW TO PLAY
+</button>
+
+<footer class="footer">
+    © TWISTOPIA | Twist. Think. Have Fun!
+</footer>
+
 </body>
 </html>
