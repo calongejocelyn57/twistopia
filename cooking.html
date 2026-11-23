@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TWISTOPIA - COOKING ADVENTURE</title>
+  <link rel="stylesheet" href="cooking.css">
+</head>
+<body>
+
+<div id="game">
+
+  <header class="top-bar">
+    <div>
+      <h1>🍔 TWISTOPIA</h1>
+      <p>COOKING ADVENTURE</p>
+    </div>
+    <div class="stage-label">STAGE 1 · TRIAL</div>
+  </header>
+
+  <section class="score-bar">
+    <div>👥 Customers: <span id="customerCount">0 / 3</span></div>
+    <div>⭐ Score: <span id="score">0</span></div>
+    <div>🪙 Coins: <span id="coins">0</span></div>
+    <div>⏱️ Time: <span id="timer">03:00</span></div>
+
+<button id="soundToggleBtn" type="button">🔊 SOUND ON</button>
+
+  </section>
+  <!-- GAME CONTROL BUTTONS -->
+  <section class="game-controls">
+    <button id="restartGameBtn">🔄 RESTART GAME</button>
+    <button id="mainMenuTopBtn">🏠 MAIN MENU</button>
+  </section>
+
+  <main id="restaurant">
+
+    <section id="restaurant-scene">
+      <div class="restaurant-sign">🍔 TWISTOPIA FAST FOOD 🍟</div>
+
+      <div class="customer-area">
+        <div id="customer-character">🧑</div>
+        <div id="customer-bubble">
+          <span id="customerName">Waiting for customer...</span>
+          <strong id="orderDetails">No order yet</strong>
+        </div>
+      </div>
+
+      <div class="counter">
+        <div class="counter-top">
+          <div class="counter-food">🍔</div>
+          <div class="counter-food">🍟</div>
+          <div class="counter-food">🥤</div>
+        </div>
+        <div class="counter-front">RESTAURANT COUNTER</div>
+      </div>
+
+      <div class="chef-area">
+        <div id="chef-character">👨‍🍳</div>
+        <div class="chef-label">CHEF</div>
+      </div>
+
+      <div id="game-message">
+        Welcome, Chef! Get ready for your first customer.
+      </div>
+    </section>
+
+    <section id="order-status-panel">
+      <h2>🧾 CUSTOMER ORDER</h2>
+      <p id="orderStatus">Waiting for order...</p>
+      <p id="selectedFood">Selected food: None</p>
+    </section>
+
+    <section id="menu-panel">
+      <h2>🍽️ CHEF'S MENU</h2>
+      <p>Select the food that matches the customer's order.</p>
+
+      <div class="food-menu">
+        <button class="food-btn" data-food="burger">
+          <span>🍔</span>
+          <strong>BURGER</strong>
+        </button>
+
+        <button class="food-btn" data-food="fries">
+          <span>🍟</span>
+          <strong>FRIES</strong>
+        </button>
+
+        <button class="food-btn" data-food="drink">
+          <span>🥤</span>
+          <strong>DRINK</strong>
+        </button>
+      </div>
+
+      <div class="action-buttons">
+        <button id="takeOrderBtn">📋 TAKE ORDER</button>
+        <button id="cookBtn">🔥 COOK</button>
+<button id="prepareBtn">🥤 PREPARE</button>
+
+        <button id="serveBtn">🍽️ SERVE</button>
+      </div>
+    </section>
+
+  </main>
+
+  
+<!-- WRONG ACTION WARNING -->
+<section id="wrongActionPanel" class="hidden">
+  <div class="warning-box">
+    <h2>⚠️ WRONG ACTION!</h2>
+    <h1>-20 POINTS</h1>
+    <p id="wrongActionMessage">
+      You pressed the wrong action!
+    </p>
+    <h3>Do you want to continue or end the game?</h3>
+
+    <div class="warning-buttons">
+      <button id="continueGameBtn">▶ CONTINUE</button>
+      <button id="endGameBtn">⏹ END GAME</button>
+    </div>
+  </div>
+</section>
+
+ 
+
+  <section id="result-panel" class="hidden">
+    <h2 id="resultTitle">STAGE COMPLETE!</h2>
+    <p id="resultDetails"></p>
+    <button id="playAgainBtn">PLAY AGAIN</button>
+    <button id="mainMenuBtn">MAIN MENU</button>
+
+
+
+
+  </section>
+
+</div>
+
+<script src="cooking.js"></script>
+</body>
+</html>
