@@ -448,46 +448,56 @@ successSound();
 
 // GAME RESULT
 
+
 function finishGame(won, manualLoss = false) {
   gameOver = true;
+
   if (!won) {
-  gameOverSound();
-}
+    gameOverSound();
+  }
+
   warningOpen = false;
 
   wrongActionPanel.classList.add("hidden");
   resultPanel.classList.remove("hidden");
 
   if (won) {
-    resultTitle.textContent = "🏆 STAGE 1 COMPLETE!";
+    resultTitle.textContent = "🎉 CONGRATULATIONS! 🎉";
 
     resultDetails.textContent =
-      "Congratulations, Chef! You served all 3 customers. " +
-      "Final Score: " + score +
-      " | Coins Earned: " + coins;
+      "🏆 STAGE 1 COMPLETE!\n\n" +
+      "You are a SUPER CHEF!\n" +
+      "You successfully served all 3 customers!\n\n" +
+      "⭐ FINAL SCORE: " + score +
+      "\n🪙 TOTAL COINS: " + coins +
+      "\n\nThank you for playing TWISTOPIA!";
 
-    showMessage("All customers served! Great job, Chef!");
+    showMessage("Amazing, Chef! You completed Stage 1!");
   } else if (manualLoss) {
     resultTitle.textContent = "💔 YOU LOSE!";
 
     resultDetails.textContent =
-      "Game ended! Final Score: " + score +
-      " | Coins Earned: " + coins;
-
+      "Game ended!\n\n" +
+      "⭐ FINAL SCORE: " + score +
+      "\n🪙 TOTAL COINS: " + coins;
+    
     showMessage("Game over, Chef!");
   } else {
     resultTitle.textContent = "⏰ TIME'S UP!";
 
     resultDetails.textContent =
-      "You served " + customerIndex +
-      " out of 3 customers. Final Score: " + score +
-      " | Coins Earned: " + coins;
+      "You served " + customerIndex + " out of 3 customers.\n\n" +
+      "⭐ FINAL SCORE: " + score +
+      "\n🪙 TOTAL COINS: " + coins +
+      "\n\nTry again, Chef!";
 
     showMessage("Time is over! Try again, Chef!");
   }
 
   updateDisplay();
 }
+
+
 
 // RESTART GAME
 
